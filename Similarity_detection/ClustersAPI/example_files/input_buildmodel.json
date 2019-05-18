@@ -1,0 +1,55 @@
+{
+  "requirements": [
+    {
+      "name": "Qt Creator crashes upon opening QBS project",
+      "id": "QTCREATORBUG-20690",
+      "text": "Opening one of my QBS based projects causes Qt Creator 4.7.0 beta2 (and beta1) to crash. Qt Creator 4.6 works fine. Judging by the gdb backtrace this seems to be related to the new QBS library shipped with Qt Creator."
+    },
+    {
+      "name": "Crash during reading qbs project",
+      "id": "QBS-1362",
+      "text": "Qt Creator crashes on startup during reading my qbs project. The only one output I was able to receive is \"[15060] Invalid parameter passed to C runtime function.\" in DebugView. "
+    },
+    {
+      "name": "/Zm200 flag is hardcoded in core.qbs",
+      "id": "QBS-1383",
+      "text": "https://github.com/qbs/qbs/blob/master/src/lib/qtprofilesetup/templates/core.qbs\\r\\n\\r\\nNo possible to override /Zm200 "
+    },
+    {
+      "name": "\"/Zm200\" compiler flag exists in core.qbs and there are no possibility to override it",
+      "id": "QBS-1382",
+      "text": "*Steps:*\\r\\n_1. Create qt project with qbs build system and msvc compiler_.\\r\\n2. _Give own compiler flag \"/Zm300\" to cpp.cxxFlags property._\\r\\n*Actual result:*\\r\\nThere is few warnings:\\r\\n\"D9025 overriding '/Zm200' with '/Zm300' and\\r\\n{color:#333333}\"D9025 overriding '/Zm200' with '/Zm300'.\\r\\n\\r\\nBuild crashes due to lack of virtual memory (cause 'Zm200' flag hardcoded in core.qbs).\\r\\n\\r\\n*Expected result:*\\r\\nThere is possibility to give compiler own '/Zm' flag{color}"
+    },
+    {
+      "name": "Virtualkeyboard provisioning fails on Linux QEMU",
+      "id": "QTBUG-65525",
+      "text": "Linux QEMU seems to be crashing when tests are run during provisioning. Output is:\\r\\n\\r\\n \\r\\n\\r\\n{color:#000000}PASS : inputpanel::tst_plugin::test_spellCorrectionSuggestions(row 0) PASS : inputpanel::tst_plugin::test_spellCorrectionSuggestions(row 1) PASS : inputpanel::tst_plugin::test_spellCorrectionSuggestions(row 2) PASS : inputpanel::tst_plugin::test_spellCorrectionSuggestions(row 3) PASS : inputpanel::tst_plugin::test_spellCorrectionSuggestions(row 4) PASS : inputpanel::tst_plugin::test_spellCorrectionSuggestions(row 5) qemu: uncaught target signal 11 (Segmentation fault) - core dumped Makefile:342: recipe for target 'check' failed make: *** [check] Segmentation fault (core dumped) {color}\\r\\n\\r\\n \\r\\n\\r\\n{color:#000000}Check: [http://coin/coin/integration/qt/qt5/tasks/1514879334] or [http://coin/coin/api/results/qt/qtvirtualkeyboard/9c1ba182f3e3ae39a9194cd2b3fde37e099b4a76/LinuxUbuntu_16_04x86_64LinuxQEMUarmv7GCCqtci-linux-Ubuntu-16.04-x86_64-1-6152beRelease/d7863c8111ef74b45b7f6ea8f3951c38b65af361/test_1514884172/log.txt.gz] for details.{color}\\r\\n\\r\\n \\r\\n\\r\\n "
+    },
+    {
+      "name": "Failing tests in inputpanel::tst_plugin on qemu/developer-build",
+      "id": "QTBUG-65507",
+      "text": "Following tests fail on qtvirtualkeyboard:\\r\\n * inputpanel::tst_plugin::test_inputMethodHints(row 8)\\r\\n ** Can be reproduced on x86 if test is run with option \"-eventdelay 500\", related to the shift key modifier\\r\\n * inputpanel::tst_plugin::test_shiftCapsLock(row 1)\\r\\n * inputpanel::tst_plugin::test_spellCorrectionSuggestions(row 2)\\r\\n ** QML heap memory issue, might be related to QTBUG-61356"
+    },
+    {
+      "name": "Missing define QT_NO_SSL with configure -no-ssl",
+      "id": "QTBUG-65531",
+      "text": "Hi all,\\r\\n\\r\\nI've compiled Qt5.9.2 under Linux Mint 14.04 and I configured it with:\\r\\n{code:java}\\r\\n-no-ssl{code}\\r\\nI was expecting, that Qt then has a define called _QT_NO_SLL_, but it isn't available.\\r\\n\\r\\nThe project I need to compile is using that define as barrier (#ifdef) and Qt is moaning, that it can't find the define.\\r\\n\\r\\nAs far as I know it should be added into qconfig.h, but it's missing there.\\r\\n\\r\\nIf you need further details please ask.\\r\\n\\r\\nKind regards,\\r\\n Mike"
+    },
+    {
+      "name": "extra compiler depend_command processing doesn't grok file names with spaces",
+      "id": "QTBUG-65543",
+      "text": "When building Qt Creator 4.5 at 30bd05b792259a559e98c6a19035f7b6adaac1ce against Qt 5.10 at 15adf3a6525aec36561d301abeeb782b35833391 ,  \"Empty filename passed to function\" is emitted when running qmake in qt-creator45/src/libs/qmleditorwidgets .\\r\\n\\r\\n"
+    },
+    {
+      "name": "extra compiler depend_command processing doesn't grok file names with spaces",
+      "id": "QTBUG-48919",
+      "text": "If a resource file refers to a file with a space in the name then it will not include it in the dependencies for the resource file itself"
+    },
+    {
+      "name": "qmake forgets RCC dependencies if the paths contain spaces",
+      "id": "QTBUG-66649",
+      "text": "Normally changing files referenced in .rcc files causes the resources to be regenerated when calling \"make\".\\r\\n\\r\\nThis is not the case if the paths contain spaces. qmake spits out a lot of `empty filename passed to function` messages and changing files referenced in resources has no effect.\\r\\n\\r\\nThis is visible in the generated Makefile as the qrc_resources.cpp target has no dependencies other than the .rcc file itself."
+    }
+  ]
+}
+
