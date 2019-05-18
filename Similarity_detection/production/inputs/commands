@@ -1,8 +1,0 @@
-build model --> 
-
-curl -X POST 'http://localhost:9405/upc/Compare/BuildModel?organization=Test&compare=true' -H 'cache-control: no-cache'   -H 'content-type: application/json' --data-binary @./input_build_model_duplicates.json
-
-
-compute clusters -->
-
-curl -X POST 'http://localhost:9405/upc/Compare/ComputeClusters?organization=Test&threshold=0.3' -H 'cache-control: no-cache'   -H 'content-type: application/json' --data-binary @./input_computeclusters_duplicates.json   > OUT.json
